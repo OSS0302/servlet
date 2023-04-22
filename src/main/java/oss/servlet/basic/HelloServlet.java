@@ -11,8 +11,10 @@ import java.io.IOException;
 public class HelloServlet extends HttpServlet { // HttpServlet를 상속받는다.
 
     @Override //서블릿이 호출되면 서비스 메서드 가 호출된다.
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("HelloServlet.service"); // 서블릿이 되는지 확인하는 테스트
+        System.out.println("request = " + request); //요청 받는
+        System.out.println("response = " + response);
 
     }
 }
