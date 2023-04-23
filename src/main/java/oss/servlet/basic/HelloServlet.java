@@ -21,5 +21,11 @@ public class HelloServlet extends HttpServlet { // HttpServlet를 상속받는�
         String usernmae = request.getParameter("username");
         System.out.println("usernmae = " + usernmae);
 
+        //응답 메시지 가 받아서 데이터가 나간다.
+        response.setContentType("text/plain"); //컨텐트 타입 헤더 정보
+        response.setCharacterEncoding("utf-8"); //디코딩은 utf-8을 쓴다 컨텐트 타입 헤더 정보
+        response.getWriter().write("helloServlet  " + usernmae);
+
+
     }
 }
