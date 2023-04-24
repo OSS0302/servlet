@@ -38,12 +38,7 @@ public class requestParamServlet extends HttpServlet {
         System.out.println("username = " + username);  // 유저이름
         System.out.println("age = " + age); //나이
 
-        System.out.println("[이름이 같은복수 파라미터 조회 ]");
-        String[] usernames = request.getParameterValues("username");// 배열 로 출력한다.
-        for (String name : usernames) {
-            System.out.println("name = " + name);
 
-        }
         response.getWriter().write("ok");
     }
 
