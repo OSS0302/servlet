@@ -16,7 +16,8 @@ public class RequestHeaderServlet  extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 스타트 라인정보 http 메서드 http 요청 메시지에 가장  첫라인 정보를 불러오는 걸 만들겠다.
         printStartLine(request);
-        printHeaders(request);
+        printHeaders(request);// 모든 헤더 정보
+        printHeaderUtils(request); // 편리한 조회
 
     }
 
@@ -54,9 +55,12 @@ public class RequestHeaderServlet  extends HttpServlet {
     }
 
     //Header 편리한 조회
-    private void printHeaderUtils(HttpServletRequest request) { System.out.println("--- Header 편의 조회 start ---"); System.out.println("[Host 편의 조회]"); System.out.println("request.getServerName() = " +
-            request.getServerName()); //Host 헤더 System.out.println("request.getServerPort() = " +
-        request.getServerPort()); //Host 헤더 System.out.println();
+    private void printHeaderUtils(HttpServletRequest request) {
+        System.out.println("--- Header 편의 조회 start ---");
+        System.out.println("[Host 편의 조회]");
+        System.out.println("request.getServerName() = " + request.getServerName()); //Host 헤더
+        System.out.println("request.getServerPort() = " + request.getServerPort()); //Host 헤더
+        System.out.println();
         System.out.println("[Accept-Language 편의 조회]"); request.getLocales().asIterator()
                 .forEachRemaining(locale -> System.out.println("locale = " +locale));
                         System.out.println("request.getLocale() = " + request.getLocale());
