@@ -37,7 +37,7 @@ public class ResponseHeaderServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         // response.setContentLength(2); //(생략시 자동 생성)
     }
-    rivate void cookie(HttpServletResponse response) {
+    private void cookie(HttpServletResponse response) {
         //Set-Cookie: myCookie=good; Max-Age=600;
         // response.setHeader("Set-Cookie", "myCookie=good; Max-Age=600");
          Cookie cookie = new Cookie("myCookie", "good");
