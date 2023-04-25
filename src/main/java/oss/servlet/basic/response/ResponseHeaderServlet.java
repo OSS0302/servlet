@@ -2,6 +2,7 @@ package oss.servlet.basic.response;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,11 +23,12 @@ public class ResponseHeaderServlet extends HttpServlet {
     response.setHeader("my-header","hello");// 임의의 헤더 을  넣겠다.
 
         //[header 편의 메서드 ]
-       content(response);
-    // 테스트
-        PrintWriter writer = response.getWriter();
-        writer.println("ok");
+        //content(response); // Content 편의 메서드
+        cookie(response);//Cookie 편의 메서드
 
+        // 테스트
+        PrintWriter writer = response.getWriter();
+        writer.println("ok"); //content-Length : 3 가 나온 이유는 println 할때 엔터도 포맘되서 그렇다 . ln 지우면 두개로 출력된다.
     }
     private void content(HttpServletResponse response) {
         //Content-Type: text/plain;charset=utf-8
@@ -35,4 +37,12 @@ public class ResponseHeaderServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         // response.setContentLength(2); //(생략시 자동 생성)
     }
+    rivate void cookie(HttpServletResponse response) {
+        //Set-Cookie: myCookie=good; Max-Age=600;
+        // response.setHeader("Set-Cookie", "myCookie=good; Max-Age=600");
+         Cookie cookie = new Cookie("myCookie", "good");
+         cookie.setMaxAge(600); //600초
+         response.addCookie(cookie);
+            }
+
 }
