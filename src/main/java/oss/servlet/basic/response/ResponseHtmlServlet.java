@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "responseJsonServlet",urlPatterns = "/response-html")
+@WebServlet(name = "ResponseHtmlServlet",urlPatterns = "/response-html")
 public class ResponseHtmlServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
