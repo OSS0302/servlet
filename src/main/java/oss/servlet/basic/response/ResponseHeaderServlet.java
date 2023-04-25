@@ -25,11 +25,12 @@ public class ResponseHeaderServlet extends HttpServlet {
         //[header 편의 메서드 ]
         //content(response); // Content 편의 메서드
         cookie(response);//Cookie 편의 메서드
-
+        redirect(response);//redirect 편의 메서드
         // 테스트
         PrintWriter writer = response.getWriter();
         writer.println("ok"); //content-Length : 3 가 나온 이유는 println 할때 엔터도 포맘되서 그렇다 . ln 지우면 두개로 출력된다.
     }
+    // Content 편의 메서드
     private void content(HttpServletResponse response) {
         //Content-Type: text/plain;charset=utf-8
         //Content-Length: 2
@@ -37,12 +38,23 @@ public class ResponseHeaderServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         // response.setContentLength(2); //(생략시 자동 생성)
     }
+    //Cookie 편의 메서드
     private void cookie(HttpServletResponse response) {
         //Set-Cookie: myCookie=good; Max-Age=600;
         // response.setHeader("Set-Cookie", "myCookie=good; Max-Age=600");
          Cookie cookie = new Cookie("myCookie", "good");
          cookie.setMaxAge(600); //600초
          response.addCookie(cookie);
-            }
+    }
+    //redirect 편의 메서드
+    private void redirect(HttpServletResponse response) throws IOException {
+        //Status Code 302
+        //Location: /basic/hello-form.html
+        //response.setStatus(HttpServletResponse.SC_FOUND); //302
+        //response.setHeader("Location", "/basic/hello-form.html");
+        response.sendRedirect("/basic/hello-form.html");
+    }
+
+
 
 }
