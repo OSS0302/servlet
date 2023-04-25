@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "responseJsonServlet",urlPatterns = "/response-html")
-public class ResponseJsonServlet  extends HttpServlet {
+public class ResponseHtmlServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     // Content-Type : text /htnml; charset = utf-8 먼저지정해줘야한다
