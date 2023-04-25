@@ -21,8 +21,9 @@ public class RequestBodyStringServlet extends HttpServlet {
 
         // String을 여러개 변환하면서 바꿔야하는데 String 에서  번거러운 작업 자동으로 해주는 유틸리티 제공한다.
         String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);// 인코딩 정보를 넘겨줘야한다. 일반적은로 UTF-8를 많이 사용한다.
-
+        //출력하기
         System.out.println("messageBody = " + messageBody);
-
+        //messagebody 을 받으면 받았다로 나온다.
+        response.getWriter().write("받았다.");
     }
 }
