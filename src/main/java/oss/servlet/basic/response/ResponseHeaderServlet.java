@@ -53,7 +53,7 @@ public class ResponseHeaderServlet extends HttpServlet {
 
         //response.setStatus(HttpServletResponse.SC_FOUND); //302
        //response.setHeader("Location", "/basic/hello-form.html");
-        response.sendRedirect("/basic/hello-form.html"); 한줄로 가능하다
+        response.sendRedirect("/basic/hello-form.html"); //  한줄로 가능하다
     }
 
 
