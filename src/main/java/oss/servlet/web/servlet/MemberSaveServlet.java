@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name="memberServlet" ,urlPatterns = "/servlet/member/save")
+@WebServlet(name="memberServlet" ,urlPatterns = "/servlet/members/save")
 public class MemberSaveServlet extends HttpServlet {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
@@ -23,7 +23,7 @@ public class MemberSaveServlet extends HttpServlet {
         int age = Integer.parseInt(request.getParameter("age"));
 
         Member member = new Member(username, age);
-        memberRepository.save(member); // 레포지 토리 저장하기
+        memberRepository.save(member); // 레포지토리 저장하기
         response.setContentType("text/html");
         response.setCharacterEncoding("utf-8");
         PrintWriter w = response.getWriter();
