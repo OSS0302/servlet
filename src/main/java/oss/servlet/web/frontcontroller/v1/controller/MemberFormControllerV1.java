@@ -1,4 +1,6 @@
-package oss.servlet.web.frontcontroller.v1;
+package oss.servlet.web.frontcontroller.v1.controller;
+
+import oss.servlet.web.frontcontroller.v1.controller.ControllerV1;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
