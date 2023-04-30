@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class MemberSaveCon장trollerV1 implements  ControllerV1{
+public class MemberSaveControllerV1 implements  ControllerV1{
     private MemberRepository memberRepository = MemberRepository.getInstance();
     @Override
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
