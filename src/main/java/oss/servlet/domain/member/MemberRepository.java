@@ -12,7 +12,7 @@ public class MemberRepository {
     private static Map<Long , Member> store = new HashMap();
     private static  long sequence =0L; //아이디 한개씩 증가 하는 시퀀스
 
-    private static  final  MemberRepository instance = new MemberRepository();
+    private static  final  MemberRepository instance = new MemberRepository(); // 스프링에서 기본적으로 싱글톤을 보장하고 있어서 싱클톤을 쓸 필요가없다.
 
     public static  MemberRepository getInstance(){
         return instance;
@@ -32,7 +32,7 @@ public class MemberRepository {
     public List<Member> findAll() {
         return new ArrayList<>(store.values()); //스토어 에있는 모든 값을 꺼내서 어레이 리스트에 넣는다.
     }
-    public void clearStore() { // 테스트 할떄만 사용하며 스토어를 다 날린다.
+    public void clearStore() {// 테스트 할떄만 사용하며 스토어를 다 날린다.
         store.clear();
     }
 
