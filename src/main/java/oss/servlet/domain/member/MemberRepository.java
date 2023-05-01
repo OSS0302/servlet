@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class MemberRepository {
     private static Map<Long , Member> store = new HashMap();
-    private static  long sequence =0L; //아이디 한개씩 증가 하는
+    private static  long sequence =0L; //아이디 한개씩 증가 하는 시퀀스
 
     private static  final  MemberRepository instance = new MemberRepository();
 
