@@ -16,7 +16,7 @@ public class MemberRepository {
 
     public static  MemberRepository getInstance(){
         return instance;
-    }
+    } // 무조건  getInstance로 통해서  조회하겠다.
     private  MemberRepository(){ //private 으로 MemberRepository를 막아야한다. 다른 개발자가 데이터를 변경할 수있으므로 사용하지 않도록 해야한다.
 
     }
