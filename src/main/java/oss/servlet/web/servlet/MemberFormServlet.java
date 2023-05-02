@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 @WebServlet(name = "memberFormServlet", urlPatterns = "/servlet/members/new-form")
 public class MemberFormServlet extends HttpServlet {
     private MemberRepository memberRepository = MemberRepository.getInstance();
-    //private MemberRepository memberRepository = new MemberRepository(); 할 수없다 기본 생성자로 막았다.
+    //private MemberRepository memberRepository = new MemberRepository(); 할 수없다 기본 생성자를 private으로 막았다.
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html"); //  html 형식을 쓸거다.
