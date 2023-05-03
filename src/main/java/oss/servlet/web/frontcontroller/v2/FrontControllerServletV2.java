@@ -1,7 +1,6 @@
 package oss.servlet.web.frontcontroller.v2;
 
 import oss.servlet.web.frontcontroller.MyView;
-import oss.servlet.web.frontcontroller.v1.ControllerV1;
 import oss.servlet.web.frontcontroller.v2.controller.MemberFormControllerV2;
 import oss.servlet.web.frontcontroller.v2.controller.MemberListControllerV2;
 import oss.servlet.web.frontcontroller.v2.controller.MemberSaveControllerV2;
@@ -18,8 +17,7 @@ import java.util.Map;
 @WebServlet(name = "frontControllerServletV2", urlPatterns ="/front-controller/v2/*")
   public class FrontControllerServletV2 extends HttpServlet {
     private Map<String, ControllerV2> controllerMap = new HashMap<>();
-    private HttpServletRequest request;
-    private HttpServletResponse response;
+
 
     public FrontControllerServletV2() {
         controllerMap.put("/front-controller/v2/members/new-form", new MemberFormControllerV2());
