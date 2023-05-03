@@ -48,7 +48,8 @@ import java.util.Map;
     }
     // 일일히 반환할때 경로를 작성하는것이 아니라 논리이름 으로 반환 할 수있는 메서드 viewResolver 를 생성했다.
     private  MyView viewResolver(String viewName) {
-        return new MyView("/WEB-INF/views" + viewName + ".jsp");
+        return new MyView("/WEB-INF/views/" + viewName + ".jsp");
+
     }
 
     private  Map<String, String> createParamMap(HttpServletRequest request) {
