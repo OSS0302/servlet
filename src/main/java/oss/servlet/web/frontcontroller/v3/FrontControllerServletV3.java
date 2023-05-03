@@ -44,7 +44,7 @@ import java.util.Map;
         String viewName = mv.getViewName();// 논리이름 예를 들면 new -form 처럼
         MyView myView = viewResolver(viewName); // 메서드 만드는 단축키: option+command+m  뷰를 해결 해준다.
 
-        myView .render(request,response);
+        myView .render(mv.getModel(),request,response);
     }
     // 일일히 반환할때 경로를 작성하는것이 아니라 논리이름 으로 반환 할 수있는 메서드 viewResolver 를 생성했다.
     private  MyView viewResolver(String viewName) {
