@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
+
+
 public class MyView {
     private String viewPath;
 
@@ -20,6 +22,10 @@ public class MyView {
 
     }
 
-    public void render(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) {
+    public void render(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws ServletException , IOException{
+        // 모델의 데이터를 다 꺼낸다.
+        model.forEach((key, value) -> request.setAttribute(key, value));// key vlaue 으로해서맵의 루프를 다 돌린다.
+        RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
+        dispatcher.forward(request,response);
     }
 }
