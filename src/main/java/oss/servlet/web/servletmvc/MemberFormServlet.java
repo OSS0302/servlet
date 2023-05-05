@@ -1,4 +1,4 @@
-package oss.servlet.web.servlet;
+package oss.servlet.web.servletmvc;
 
 import oss.servlet.domain.member.MemberRepository;
 
