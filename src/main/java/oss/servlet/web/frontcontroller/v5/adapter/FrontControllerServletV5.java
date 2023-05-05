@@ -4,7 +4,6 @@ package oss.servlet.web.frontcontroller.v5.adapter;
 
 import oss.servlet.web.frontcontroller.ModelVeiw;
 import oss.servlet.web.frontcontroller.MyView;
-import oss.servlet.web.frontcontroller.v3.ControllerV3;
 import oss.servlet.web.frontcontroller.v3.controller.MemberFormControllerV3;
 import oss.servlet.web.frontcontroller.v3.controller.MemberListControllerV3;
 import oss.servlet.web.frontcontroller.v3.controller.MemberSaveControllerV3;
@@ -20,9 +19,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static jdk.jfr.internal.Utils.getHandler;
 
-@WebServlet(name = "frontControllerServletV5",urlPatterns = "/front-controller/v5/*")
+
+@WebServlet(name = "frontControllerServletV5",urlPatterns ="/front-controller/v5/*")
 public class FrontControllerServletV5 extends HttpServlet {
     //private final Map<String, ControllerV4> contrllerMap =new HashMap<>(); //기존 방식 싱글톤으로 한개만 지원된다.
     private final Map<String, Object> handlerMappingMap = new HashMap<>();//모든 컨트롤러를 지원하기 위해서 object를 쓴다.
@@ -35,13 +34,13 @@ public class FrontControllerServletV5 extends HttpServlet {
     }
 
     private void initHandlerAdapters() {
-        handlerAdapters.add(new ControllerV3HandlerAdapter());        //핸들러 어텝터 ControllerV3HandlerAdapter를 추가해주자
+        handlerAdapters.add(new ControllerV3HandlerAdapter());//핸들러 어텝터 ControllerV3HandlerAdapter를 추가해주자
     }
 
     private void initHandlerMappingMap() {
-        handlerMappingMap.put("/front-controller/v3/members/new-form", new MemberFormControllerV3());
-        handlerMappingMap.put("/front-controller/v3/members/save", new MemberSaveControllerV3());
-        handlerMappingMap.put("/front-controller/v3/members", new MemberListControllerV3());
+        handlerMappingMap.put("/front-controller/v5/v3/members/new-form", new MemberFormControllerV3());
+        handlerMappingMap.put("/front-controller/v5/v3/members/save", new MemberSaveControllerV3());
+        handlerMappingMap.put("/front-controller/v5/v3/members", new MemberListControllerV3());
     }
 
     @Override
@@ -54,11 +53,12 @@ public class FrontControllerServletV5 extends HttpServlet {
 
         MyHandlerAdapter adapter = getHandlerAdapter(handler);
 
+        ModelVeiw mv = adapter.handle(request, response, handler);// 요청 응답 핸들러를 모델뷰로 반환해라
+
 
         //paramMap // 디테일 한 로직
-        Map<String, String> paramMap = createParamMap(request);
-        ModelVeiw mv = controller.process(paramMap);
-        //"/WEB-INF/views/new-form.jsp과 같다.
+
+
         String viewName = mv.getViewName();// 논리이름 예를 들면 new -form 처럼
         MyView myView = viewResolver(viewName); // 메서드 만드는 단축키: option+command+m  뷰를 해결 해준다.
 
@@ -79,5 +79,8 @@ public class FrontControllerServletV5 extends HttpServlet {
             }
         }
         throw new IllegalArgumentException("handler adapter를 찾을 수 없습니다. handler=" + handler);
+    }
+    private MyView viewResolver(String viewName) {
+        return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
 }
