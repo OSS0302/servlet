@@ -65,6 +65,12 @@ public class FrontControllerServletV5 extends HttpServlet {
         myView .render(mv.getModel(),request,response);
     }
 
+    private Object getHandler(HttpServletRequest request) {
+        String requestURI = request.getRequestURI(); // 요청된 url를 가지온 다음에
+        // 여러개의 컨트롤러 사용하기 위해서는 object로 가져와야한다.
+      return handlerMappingMap.get(requestURI); // 요청된requestURI 가 오면 handlerMappingMap을 보내서 handler 를 찾는다.
+    }
+
     private MyHandlerAdapter getHandlerAdapter(Object handler) {
         MyHandlerAdapter antherAnther;
         for (MyHandlerAdapter adapter : handlerAdapters) {
@@ -72,11 +78,6 @@ public class FrontControllerServletV5 extends HttpServlet {
                 return adapter;
             }
         }
-    }
-
-    private Object getHandler(HttpServletRequest request) {
-        String requestURI = request.getRequestURI(); // 요청된 url를 가지온 다음에
-        // 여러개의 컨트롤러 사용하기 위해서는 object로 가져와야한다.
-      return handlerMappingMap.get(requestURI); // 요청된requestURI 가 오면 handlerMappingMap을 보내서 handler 를 찾는다.
+        throw new IllegalArgumentException("handler adapter를 찾을 수 없습니다. handler=" + handler);
     }
 }
