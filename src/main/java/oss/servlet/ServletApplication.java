@@ -14,7 +14,7 @@ public class  ServletApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ServletApplication.class, args);
 	}
-//	@Bean
+//	@Bean 경로적는걸 스프링부트 자동으로 해주니까 해줄 필요가없다.
 //	ViewResolver  internalResourceViewResolver(){
 //		return  new InternalResourceViewResolver("/WEB-INF/views",".jsp");
 //	}
