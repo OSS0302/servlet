@@ -1,12 +1,12 @@
 package oss.servlet.web.frontcontroller.v5.adapter;
-
-
-
 import oss.servlet.web.frontcontroller.ModelVeiw;
 import oss.servlet.web.frontcontroller.MyView;
 import oss.servlet.web.frontcontroller.v3.controller.MemberFormControllerV3;
 import oss.servlet.web.frontcontroller.v3.controller.MemberListControllerV3;
 import oss.servlet.web.frontcontroller.v3.controller.MemberSaveControllerV3;
+import oss.servlet.web.frontcontroller.v4.controller.MemberFormControllerV4;
+import oss.servlet.web.frontcontroller.v4.controller.MemberListControllerV4;
+import oss.servlet.web.frontcontroller.v4.controller.MemberSaveControllerV4;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,12 +35,17 @@ public class FrontControllerServletV5 extends HttpServlet {
 
     private void initHandlerAdapters() {
         handlerAdapters.add(new ControllerV3HandlerAdapter());//핸들러 어텝터 ControllerV3HandlerAdapter를 추가해주자
+        handlerAdapters.add(new ControllerV4HandlerAdapter());////핸들러 어텝터 ControllerV4HandlerAdapter를 추가해주자
     }
 
     private void initHandlerMappingMap() {
         handlerMappingMap.put("/front-controller/v5/v3/members/new-form", new MemberFormControllerV3());
         handlerMappingMap.put("/front-controller/v5/v3/members/save", new MemberSaveControllerV3());
         handlerMappingMap.put("/front-controller/v5/v3/members", new MemberListControllerV3());
+        // controllerv4 도 추가한다.
+        handlerMappingMap.put("/front-controller/v5/v4/members/new-form", new MemberFormControllerV4());
+        handlerMappingMap.put("/front-controller/v5/v4/members/save", new MemberSaveControllerV4());
+        handlerMappingMap.put("/front-controller/v5/v4/members", new MemberListControllerV4());
     }
 
     @Override
