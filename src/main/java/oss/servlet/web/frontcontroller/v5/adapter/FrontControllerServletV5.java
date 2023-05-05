@@ -52,6 +52,9 @@ public class FrontControllerServletV5 extends HttpServlet {
             return;
         }
 
+        MyHandlerAdapter adapter = getHandlerAdapter(handler);
+
+
         //paramMap // 디테일 한 로직
         Map<String, String> paramMap = createParamMap(request);
         ModelVeiw mv = controller.process(paramMap);
@@ -60,6 +63,15 @@ public class FrontControllerServletV5 extends HttpServlet {
         MyView myView = viewResolver(viewName); // 메서드 만드는 단축키: option+command+m  뷰를 해결 해준다.
 
         myView .render(mv.getModel(),request,response);
+    }
+
+    private MyHandlerAdapter getHandlerAdapter(Object handler) {
+        MyHandlerAdapter antherAnther;
+        for (MyHandlerAdapter adapter : handlerAdapters) {
+            if (adapter.supports(handler)) { //만약에 어텁터가 핸들러를 지원하는 제어문
+                return adapter;
+            }
+        }
     }
 
     private Object getHandler(HttpServletRequest request) {
