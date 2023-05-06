@@ -10,6 +10,7 @@ import java.util.Map;
 public class MemberSaveControllerV3 implements ControllerV3 {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
+
     @Override
     public ModelVeiw process(Map<String, String> paramMap) {
         String username = paramMap.get("username"); //데이터를 꺼내서 사용하면된다.

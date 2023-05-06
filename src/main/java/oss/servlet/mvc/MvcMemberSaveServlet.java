@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "mvcMemberSaveServlet", urlPatterns = "/servlet-mvc/members/ save")
-        public class MvcMemberSaveServlet extends HttpServlet {
+public class MvcMemberSaveServlet extends HttpServlet {
+
         private MemberRepository memberRepository = MemberRepository.getInstance();
+
         @Override
         protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             String username = request.getParameter("username");
