@@ -6,6 +6,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import oss.servlet.web.springmvc.v1.SpringMemberFormControllerV1;
 
 @ServletComponentScan // 서블릿 자동 등록
 @SpringBootApplication
@@ -18,4 +19,9 @@ public class  ServletApplication {
 //	ViewResolver  internalResourceViewResolver(){
 //		return  new InternalResourceViewResolver("/WEB-INF/views",".jsp");
 //	}
+	@Bean //직접 빈에 등록해도된다.
+	SpringMemberFormControllerV1 springMemberFormControllerV1(){
+		return new SpringMemberFormControllerV1();
+
+	}
 }
