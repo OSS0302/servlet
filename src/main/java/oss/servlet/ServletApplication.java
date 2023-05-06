@@ -19,9 +19,9 @@ public class  ServletApplication {
 //	ViewResolver  internalResourceViewResolver(){
 //		return  new InternalResourceViewResolver("/WEB-INF/views",".jsp");
 //	}
-	@Bean //직접 빈에 등록해도된다.
-	SpringMemberFormControllerV1 springMemberFormControllerV1(){
-		return new SpringMemberFormControllerV1();
-
-	}
+//	@Bean //직접 빈에 등록해도된다.
+//	SpringMemberFormControllerV1 springMemberFormControllerV1(){
+//		return new SpringMemberFormControllerV1();
+//
+//	}
 }
