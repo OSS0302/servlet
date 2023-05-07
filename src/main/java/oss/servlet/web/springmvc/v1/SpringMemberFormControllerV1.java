@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 //@Controller
 
-@Component
+//@Component
 @RequestMapping//컴포넌트 스캔을 통해 스프링 빈으로 등록
 public class SpringMemberFormControllerV1 {
     @RequestMapping("/springmvc/v1/members/new-form")
