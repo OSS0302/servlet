@@ -8,6 +8,8 @@ import oss.servlet.domain.member.Member;
 import oss.servlet.domain.member.MemberRepository;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 @Controller
 
@@ -16,19 +18,18 @@ public class SpringMemberSaveControllerV1  {
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @RequestMapping("/springmvc/v1/members/save")
-    public ModelAndView process(Map<String, String> paramMap) {
-        String username = paramMap.get("username"); //데이터를 꺼내서 사용하면된다.
-        int age = Integer.parseInt(paramMap.get("age"));
 
-        Member member = new Member(username,age);
-        memberRepository.save(member); // 이름과 나이를 저장한다.
+    public ModelAndView process(HttpServletRequest request, HttpServletResponse response) {
 
-        //모델 인스턴스 를 만들어서 멤버의 데이터를  modelView 를 넣는다.
-        ModelAndView mv =new ModelAndView("save-result");
-        //mv.getModel().put("member",member); //이거 사용해도 되지만
+        String username = request.getParameter("username"); // String 타입으로 데이터 이름 을 요청한다
+        int age = Integer.parseInt(request.getParameter("age")); //int 타입으로 데이터 나이 을 요청한다
+
+        Member member = new Member(username,age); // 이름 나이를 객체 생성
+        System.out.println("member = " + member);
+        memberRepository.save(member);// 멤버를 저장한다.
+
+        ModelAndView mv = new ModelAndView("save-result");
         mv.addObject("member",member);
-        return mv; // modelVeiw로 반환하다.
-
-
+         return mv;
     }
 }
