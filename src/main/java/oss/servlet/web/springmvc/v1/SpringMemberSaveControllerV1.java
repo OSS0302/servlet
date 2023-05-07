@@ -1,14 +1,16 @@
 package oss.servlet.web.springmvc.v1;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import oss.servlet.domain.member.Member;
 import oss.servlet.domain.member.MemberRepository;
-import oss.servlet.web.frontcontroller.ModelVeiw;
+
 
 import java.util.Map;
 @Controller
+
 public class SpringMemberSaveControllerV1  {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
