@@ -42,7 +42,7 @@ public class SpringMemberControllerV3 {
     public String members(Model model) {
         List<Member> members = memberRepository.findAll();// memberRepository 이름과 나이를 조회하겠다.
 
-        model.addAttribute("member",members); // 모델 데이터 를 실어서 보내면된다.
+        model.addAttribute("members",members); // 모델 데이터 를 실어서 보내면된다.
         return "members";
     }
 
