@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
-
+/**
+ *클래스 단위->메서드 단위
+ * @RequestMapping 클래스 레벨과 메서드 레벨 조합 */
 
 @Controller
 @RequestMapping("/springmvc/v2/members")
@@ -39,7 +41,7 @@ public class SpringMemberControllerV2 {
         return mv;
     }
 
-    @RequestMapping("/members")
+    @RequestMapping
     public ModelAndView members() {
         List<Member> members = memberRepository.findAll();// memberRepository 이름과 나이를 조회하겠다.
         ModelAndView mv = new ModelAndView("members");
