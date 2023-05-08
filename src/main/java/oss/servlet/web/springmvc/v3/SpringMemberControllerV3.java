@@ -25,7 +25,7 @@ public class SpringMemberControllerV3 {
     }
 
     @RequestMapping("/save")
-    public ModelAndView save(
+    public String save(
         @RequestParam("username")String username ,//@RequestParam를 직접 받을 수도있다.
         @RequestParam("age") int age,
         Model model) {
@@ -34,9 +34,8 @@ public class SpringMemberControllerV3 {
 
         memberRepository.save(member);// 멤버를 저장한다.
 
-        ModelAndView mv = new ModelAndView("save-result");
-        mv.addObject("member",member);
-        return mv;
+        model.addAttribute("member",member); // 모델에 데이터 실어서 보낸다.
+        return "save-result"; //save-result로 반환
     }
 
     @RequestMapping
