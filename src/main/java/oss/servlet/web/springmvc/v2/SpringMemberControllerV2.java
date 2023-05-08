@@ -13,18 +13,18 @@ import java.util.Map;
 
 
 @Controller
-
+@RequestMapping("/springmvc/v2/members")
 public class SpringMemberControllerV2 {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
-        @RequestMapping("/springmvc/v2/members/new-form")
+        @RequestMapping("/new-form")
         public ModelAndView newForm(){
             return new ModelAndView("new-form");
 
         }
 
-    @RequestMapping("/springmvc/v2/members/save")
+    @RequestMapping("/save")
     public ModelAndView save(HttpServletRequest request, HttpServletResponse response) {
 
         String username = request.getParameter("username"); // String 타입으로 데이터 이름 을 요청한다
@@ -39,7 +39,7 @@ public class SpringMemberControllerV2 {
         return mv;
     }
 
-    @RequestMapping("springmvc/v2/members")
+    @RequestMapping("/members")
     public ModelAndView members() {
         List<Member> members = memberRepository.findAll();// memberRepository 이름과 나이를 조회하겠다.
         ModelAndView mv = new ModelAndView("members");
