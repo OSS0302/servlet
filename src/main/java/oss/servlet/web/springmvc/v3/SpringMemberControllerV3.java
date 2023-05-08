@@ -25,7 +25,7 @@ public class SpringMemberControllerV3 {
 
     }
 
-    @RequestMapping(value = "/save")
+    @RequestMapping(value = "/save",method = RequestMethod.POST)//RequestMethod.Post 인경우에만 회원저장을 호출해라
     public String save(
         @RequestParam("username")String username ,//@RequestParam를 직접 받을 수도있다.
         @RequestParam("age") int age,
