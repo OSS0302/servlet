@@ -19,13 +19,13 @@ public class SpringMemberControllerV3 {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
-    @RequestMapping(value = "/new-form",method = RequestMethod.GET)
+    @RequestMapping(value = "/new-form",method = RequestMethod.GET)// RequestMethod.GET 인경우에만 회원등록을 호출해라
     public String newForm(){
         return "new-form";
 
     }
 
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save",method = RequestMethod.GET)// RequestMethod.GET 인경우에만 회원저장을 호출해라
     public String save(
         @RequestParam("username")String username ,//@RequestParam를 직접 받을 수도있다.
         @RequestParam("age") int age,
