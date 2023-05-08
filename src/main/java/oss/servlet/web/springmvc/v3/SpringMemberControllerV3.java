@@ -2,6 +2,7 @@ package oss.servlet.web.springmvc.v3;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,8 @@ public class SpringMemberControllerV3 {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
-    @RequestMapping(value = "/new-form",method = RequestMethod.GET)// RequestMethod.GET 인경우에만 회원등록을 호출해라
+    //@RequestMapping(value = "/new-form",method = RequestMethod.GET)// RequestMethod.GET 인경우에만 회원등록을 호출해라
+    @GetMapping("new-form")
     public String newForm(){
         return "new-form";
 
