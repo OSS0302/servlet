@@ -40,7 +40,7 @@ public class SpringMemberControllerV3 {
     }
 
     //@RequestMapping(method = RequestMethod.GET) //RequestMethod.GET 인경우에만 회원목록을 호출해라
-
+    @GetMapping
     public String members(Model model) {
         List<Member> members = memberRepository.findAll();// memberRepository 이름과 나이를 조회하겠다.
 
