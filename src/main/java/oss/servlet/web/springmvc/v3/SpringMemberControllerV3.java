@@ -2,10 +2,7 @@ package oss.servlet.web.springmvc.v3;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import oss.servlet.domain.member.Member;
 import oss.servlet.domain.member.MemberRepository;
@@ -27,7 +24,8 @@ public class SpringMemberControllerV3 {
 
     }
 
-    @RequestMapping(value = "/save",method = RequestMethod.POST)//RequestMethod.Post 인경우에만 회원저장을 호출해라
+    //@RequestMapping(value = "/save",method = RequestMethod.POST)//RequestMethod.Post 인경우에만 회원저장을 호출해라
+    @PostMapping("save")
     public String save(
         @RequestParam("username")String username ,//@RequestParam를 직접 받을 수도있다.
         @RequestParam("age") int age,
@@ -41,7 +39,8 @@ public class SpringMemberControllerV3 {
         return "save-result"; //save-result로 반환
     }
 
-    @RequestMapping(method = RequestMethod.GET) //RequestMethod.GET 인경우에만 회원목록을 호출해라
+    //@RequestMapping(method = RequestMethod.GET) //RequestMethod.GET 인경우에만 회원목록을 호출해라
+
     public String members(Model model) {
         List<Member> members = memberRepository.findAll();// memberRepository 이름과 나이를 조회하겠다.
 
