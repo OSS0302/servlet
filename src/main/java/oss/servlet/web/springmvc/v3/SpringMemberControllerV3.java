@@ -1,7 +1,9 @@
 package oss.servlet.web.springmvc.v3;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import oss.servlet.domain.member.Member;
 import oss.servlet.domain.member.MemberRepository;
@@ -23,10 +25,10 @@ public class SpringMemberControllerV3 {
     }
 
     @RequestMapping("/save")
-    public ModelAndView save(HttpServletRequest request, HttpServletResponse response) {
-
-        String username = request.getParameter("username"); // String 타입으로 데이터 이름 을 요청한다
-        int age = Integer.parseInt(request.getParameter("age")); //int 타입으로 데이터 나이 을 요청한다
+    public ModelAndView save(
+        @RequestParam("username")String username ,//@RequestParam를 직접 받을 수도있다.
+        @RequestParam("age") int age,
+        Model model) {
 
         Member member = new Member(username,age); // 이름 나이를 객체 생성
 
@@ -40,6 +42,7 @@ public class SpringMemberControllerV3 {
     @RequestMapping
     public ModelAndView members() {
         List<Member> members = memberRepository.findAll();// memberRepository 이름과 나이를 조회하겠다.
+
         ModelAndView mv = new ModelAndView("members");
         //mv.getModel().put("members", members);
         mv.addObject("members", members);
