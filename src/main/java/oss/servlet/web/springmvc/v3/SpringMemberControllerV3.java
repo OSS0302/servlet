@@ -39,13 +39,11 @@ public class SpringMemberControllerV3 {
     }
 
     @RequestMapping
-    public ModelAndView members() {
+    public String members(Model model) {
         List<Member> members = memberRepository.findAll();// memberRepository 이름과 나이를 조회하겠다.
 
-        ModelAndView mv = new ModelAndView("members");
-        //mv.getModel().put("members", members);
-        mv.addObject("members", members);
-        return mv;
+        model.addAttribute("member",members); // 모델 데이터 를 실어서 보내면된다.
+        return "members";
     }
 
 
