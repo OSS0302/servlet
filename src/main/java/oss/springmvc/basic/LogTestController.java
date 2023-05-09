@@ -14,7 +14,13 @@ public class LogTestController {
         String name = "Spring";
 
         System.out.println("name = " + name);
-        log.info(" info log ={}",name);
+거
+        log.trace("trace log={}", name);
+        log.debug("debug log={}", name); //현재 로그는 디버그
+        log.info(" info log={}", name); // 비즈니스 정보
+        log.warn(" warn log={}", name); // 경고
+        log.error("error log={}", name); // 에러
+
 
         return "ok";
 
