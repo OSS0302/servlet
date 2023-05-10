@@ -41,8 +41,8 @@ public class MappingController {
     //PathVariable(경로 변수) 사용 많이 사용된다.
     @GetMapping("/mapping/{userId}")
     // @RequestMapping 은 URL 경로를 템플릿화 할 수 있는데, @PathVariable 을 사용하면 매칭 되는 부분을 편리하게 조회할 수 있다.@PathVariable 의 이름과 파라미터 이름이 같으면 생략할 수 있다.
-    public String mappingPath(@PathVariable("userId")String data){
-        log.info("mappingPath userId={}",data);
+    public String mappingPath(@PathVariable String userId){ //@PathVariable 의 이름과 파라미터 이름이 같으면 생략할 수 있다.
+        log.info("mappingPath userId={}",userId);
         return "ok";
     }
 }
