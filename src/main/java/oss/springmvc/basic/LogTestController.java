@@ -1,13 +1,15 @@
 package oss.springmvc.basic;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j //private final Logger  log = LoggerFactory.getLogger(getClass()) 자동으로 적용 시켜주며 을 롬복에서 편리하게 해주는 어노테이션
 @RestController // @RestController : 반환 할때 스트링이 그냥 반환이 된다.
 public class LogTestController {
-    private final Logger  log = LoggerFactory.getLogger(getClass());
+
 
     @RequestMapping("/log-test")
     public String logTest(){
