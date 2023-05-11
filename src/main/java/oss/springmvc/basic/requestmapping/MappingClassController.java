@@ -13,8 +13,12 @@ public class MappingClassController {
      회원 삭제: DELETE /users/{userId}
     */
     @GetMapping("/mapping/users")
-    public String uesr(){ // 회원 목록조회
+    public String uesrs(){ // 회원 목록조회
         return "get users";
+    }
+    @PostMapping("/mapping/users")
+    public String addUser(){ // 회원 등록
+        return "post user";
     }
 
 
