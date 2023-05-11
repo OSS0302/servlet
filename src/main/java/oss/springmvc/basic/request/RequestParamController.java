@@ -49,6 +49,10 @@ public class RequestParamController {
         log.info("username={}, age={}", username, age); // 파라미터 네임같아야지 생략이 가능하다
         return "ok";
     }
-
-
+    @ResponseBody
+    @RequestMapping("/request-param-v4")
+    public String requestParamV4( String username,int age) { //요청 파라미터 이름과 같으면 @RequestParam 의 이름이 생략이 가능하다.
+        log.info("username={}, age={}", username, age);
+        return "ok";
+    }
 }
