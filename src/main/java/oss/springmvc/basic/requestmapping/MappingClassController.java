@@ -28,7 +28,10 @@ public class MappingClassController {
     public String updateUser(@PathVariable String userId){ // 회원 수정
         return"update userId" + userId;
     }
-
+    @DeleteMapping("/mapping/users/{userId}")
+    public String deleteUser(@PathVariable String userId){ // 회원 삭제
+        return"delete userId" + userId;
+    }
 
 
 }
