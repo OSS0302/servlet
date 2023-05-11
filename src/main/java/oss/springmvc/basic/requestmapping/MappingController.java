@@ -97,6 +97,19 @@ public class MappingController {
         log.info("mappingConsumes");
         return "ok";
     }
+    /**미디어 타입 조건 매핑 - HTTP 요청 Accept, produce
+     * Accept 헤더 기반 Media Type
+     * * produces = "text/html"
+     * produces = "!text/html"
+     * produces = "text/*"
+     * produces = "*\/*"
+     */
+    @PostMapping(value = "/mapping-produce", produces = "text/html") // 클라이언트가 나는 컨텐트 타입이 text/html을 받아드릴수있다.
+    public String mappingProduces() {
+        log.info("mappingProduces");
+        return "ok";
+    }
+
 
 
 }
