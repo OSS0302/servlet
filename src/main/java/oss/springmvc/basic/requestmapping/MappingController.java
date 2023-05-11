@@ -84,4 +84,19 @@ public class MappingController {
         return "ok";
     }
 
+    /** 미디어 타입 조건 매핑 - HTTP 요청 Content-Type, consume
+     * Content-Type 헤더 기반 추가 매핑 Media Type
+     * consumes="application/json"
+     * consumes="!application/json"
+     * consumes="application/*"
+     * consumes="*\/*"
+     * MediaType.APPLICATION_JSON_VALUE
+     */
+    @PostMapping(value = "/mapping-consume", consumes = "application/json") // 헤더 컨텐트 타입이 application/json 경우에만 호출된다..
+    public String mappingConsumes() {
+        log.info("mappingConsumes");
+        return "ok";
+    }
+
+
 }
