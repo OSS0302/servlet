@@ -20,6 +20,14 @@ public class MappingClassController {
     public String addUser(){ // 회원 등록
         return "post user";
     }
+    @GetMapping("/mapping/users/{userId}")
+    public String findUser(@PathVariable String userId){ // 회원 조회(한명만 조회)
+        return"get userId" + userId;
+    }
+    @PatchMapping("/mapping/users/{userId}")
+    public String updateUser(@PathVariable String userId){ // 회원 수정
+        return"update userId" + userId;
+    }
 
 
 
