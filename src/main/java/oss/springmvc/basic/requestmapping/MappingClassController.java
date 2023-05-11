@@ -3,6 +3,7 @@ package oss.springmvc.basic.requestmapping;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/mapping/users")
 public class MappingClassController {
     /**
     회원 관리 API
@@ -12,23 +13,23 @@ public class MappingClassController {
     회원수정: PATCH /users/{userId}
      회원 삭제: DELETE /users/{userId}
     */
-    @GetMapping("/mapping/users")
+    @GetMapping()
     public String uesrs(){ // 회원 목록조회
         return "get users";
     }
-    @PostMapping("/mapping/users")
+    @PostMapping()
     public String addUser(){ // 회원 등록
         return "post user";
     }
-    @GetMapping("/mapping/users/{userId}")
+    @GetMapping("/{userId}")
     public String findUser(@PathVariable String userId){ // 회원 조회(한명만 조회)
         return"get userId" + userId;
     }
-    @PatchMapping("/mapping/users/{userId}")
+    @PatchMapping("/{userId}")
     public String updateUser(@PathVariable String userId){ // 회원 수정
         return"update userId" + userId;
     }
-    @DeleteMapping("/mapping/users/{userId}")
+    @DeleteMapping("/{userId}")
     public String deleteUser(@PathVariable String userId){ // 회원 삭제
         return"delete userId" + userId;
     }
