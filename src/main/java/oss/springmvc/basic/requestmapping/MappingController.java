@@ -56,5 +56,20 @@ public class MappingController {
         return "ok";
     }
 
-    
+    /**
+     * 특정 파라미터 조건 매핑 많이 사용하지 않는다.
+     * 파라미터로 추가 매핑
+     * params="mode",
+     * params="!mode"
+     * params="mode=debug"
+     * params="mode!=debug" (! = )
+     * params = {"mode=debug","data=good"}
+     */
+    @GetMapping(value = "/mapping-param", params = "mode=debug") // 특정한 파라미터 있으면 파람스 가 작동됩니다.
+    // url 경로 뿐만 아니라 파라미터 정보까지  mode debug도 넣어 서 맵핑이 된것이다.
+    public String mappingParam() {
+        log.info("mappingParam");
+        return "ok";
+    }
+
 }
