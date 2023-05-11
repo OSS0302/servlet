@@ -92,7 +92,7 @@ public class MappingController {
      * consumes="*\/*"
      * MediaType.APPLICATION_JSON_VALUE
      */
-    @PostMapping(value = "/mapping-consume", consumes = "application/json") // 헤더 컨텐트 타입이 application/json 경우에만 호출된다..
+    @PostMapping(value = "/mapping-consume", consumes = "application/json") // 요청 헤더 컨텐트 타입이 application/json 경우에만 호출된다..
     public String mappingConsumes() {
         log.info("mappingConsumes");
         return "ok";
@@ -104,7 +104,8 @@ public class MappingController {
      * produces = "text/*"
      * produces = "*\/*"
      */
-    @PostMapping(value = "/mapping-produce", produces = "text/html") // 클라이언트가 나는 컨텐트 타입이 text/html을 받아드릴수있다.
+    @PostMapping(value = "/mapping-produce", produces = "text/html")  // 요청 헤더의 accept 기반으로 맵핑이된다.
+    // 클라이언트가 나는 컨텐트 타입이 text/html을 받아드릴수있다.
     public String mappingProduces() {
         log.info("mappingProduces");
         return "ok";
