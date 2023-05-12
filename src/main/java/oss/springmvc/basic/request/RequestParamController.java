@@ -5,10 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import oss.servlet.basic.request.HelloData;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -55,4 +57,19 @@ public class RequestParamController {
         log.info("username={}, age={}", username, age);
         return "ok";
     }
+    //  @RequestParam (required = ture) 기본값이다 무조건 RequestParam 값이 있어야한다. 인그러면  bad required 오류가난다.
+    // @RequestParam (required = false) 값이 없어도 된다.
+    @ResponseBody
+    @RequestMapping("/request-param-required")
+    public String requestParamRequired(
+            @RequestParam (required = false)String username,
+            @RequestParam (required = false) Integer age) {  // 자바는 int =null 를 넣을 수없다.
+        //int a = null; //컴파일 오류나서  안된다.
+        //Integer =null; 자바에서 객체는 null 들어갈수있다.
+        log.info("username={}, age={}", username, age);
+        return "ok";
+    }
+
+
+
 }
