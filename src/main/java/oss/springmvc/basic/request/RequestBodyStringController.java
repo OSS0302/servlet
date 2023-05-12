@@ -44,24 +44,15 @@ public class RequestBodyStringController {
 
     }
 
-//    @RequestMapping("/request-body-string-v3")
-//    public HttpEntity<String>requestBodyStringV3 (HttpEntity<String>httpEntity) throws IOException {
-//
-//        String messageBody = httpEntity.getBody();
-//
-//        log.info("messageBody={}",messageBody);
-//
-//        return new HttpEntity<>("ok");
-//
-//    }
-//        @ResponseBody
-//        @PostMapping("/request-body-string-v4")
-//    public String requestBodyStringV4 (@RequestBody String messageBody)  {
-//
-//        log.info("messageBody={}",messageBody);
-//
-//        return "ok";
-//
-//    }
+    @RequestMapping("/request-body-string-v3")
+    public HttpEntity<String>requestBodyStringV3 (HttpEntity<String>httpEntity) throws IOException {
+
+        String messageBody = httpEntity.getBody();
+
+        log.info("messageBody={}",messageBody);
+
+        return new HttpEntity<>("ok");
+
+    }
 
 }
