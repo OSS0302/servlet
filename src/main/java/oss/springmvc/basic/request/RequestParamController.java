@@ -70,6 +70,17 @@ public class RequestParamController {
         return "ok";
     }
 
+    // 빈문자에도 설정된 geust 값이 지정된다.
+    @ResponseBody
+    @RequestMapping("/request-param-default")
+    public String requestParamDefault(
+            @RequestParam (required = false,defaultValue ="guest" )String username, // 회원 이름이 만약에 없다면 게스트로 하겠다.
+            @RequestParam (required = false,defaultValue = "-1") Integer age) {  // 나이가 없다면 -1 로 하겠다.
+
+        log.info("username={}, age={}", username, age);
+        return "ok";
+    }
+
 
 
 }
