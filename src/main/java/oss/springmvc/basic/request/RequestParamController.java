@@ -81,6 +81,14 @@ public class RequestParamController {
         return "ok";
     }
 
+    @ResponseBody
+    @RequestMapping("/request-param-map")
+    public String requestParamMap(@RequestParam Map<String,Object> paramMap){ // 맵을 통해서 이름을 스트링으로 나이를 객체로 해서
+        // paramMap.get 이름과 나이를 가져오면 된다.
+        log.info("username={}, age={}",paramMap.get("username"),paramMap.get("age"));
+        return "ok";
+    }
+
 
 
 }
