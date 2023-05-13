@@ -23,5 +23,17 @@ public class ResponseBodyController {
         response.getWriter().write("ok");
     }
 
+    @GetMapping("/response-body-string-v2")
+    public ResponseEntity<String> responseBodyV2()throws IOException {
+        return new ResponseEntity<>("ok", HttpStatus.OK);
+    }
+    @ResponseBody
+    @GetMapping("/response-body-string-v3")
+    public String  responseBodyV3 () {
+        return "ok";
+    }
+
+
+
 
 }
