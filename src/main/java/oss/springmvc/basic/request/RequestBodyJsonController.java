@@ -2,9 +2,13 @@ package oss.springmvc.basic.request;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StreamUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import oss.springmvc.basic.HelloData;
 
 import javax.servlet.ServletInputStream;
@@ -32,4 +36,25 @@ public class RequestBodyJsonController {
         log.info("username={}, age={}", data.getUsername(), data.getAge());
         response.getWriter().write("ok");
     }
+    /**
+     * @RequestBody
+     * HttpMessageConverter 사용 -> StringHttpMessageConverter 적용 *
+     * @ResponseBody
+     * - 모든 메서드에 @ResponseBody 적용
+     * - 메시지 바디 정보 직접 반환(view 조회X)
+     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용 */
+
+    @ResponseBody
+    @PostMapping("/request-body-json-v2")
+    public String requestBodyJsonV2(@RequestBody String messageBody) throws IOException {
+
+        log.info("messageBody={}", messageBody);
+        HelloData data = objectMapper.readValue(messageBody, HelloData.class);
+        log.info("username={}, age={}", data.getUsername(), data.getAge());
+        return "ok";
+    }
+
+
+
+
 }
