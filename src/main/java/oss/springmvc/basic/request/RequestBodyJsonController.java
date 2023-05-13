@@ -70,6 +70,11 @@ public class RequestBodyJsonController {
         return "ok";
     }
 
-
+    @ResponseBody // 들어갈때도 문자 가 적용되듯이 반환될때도 문자가 반환된다. 제이슨 데이터 도 같다.
+    @PostMapping("/request-body-json-v5")
+    public HelloData requestBodyJsonV4(@RequestBody HelloData data) {
+        log.info("username={}, age={}", data.getUsername(),data.getAge());
+        return data; // 나갈때 도 제이슨으로 나온다.
+    }
 
 }
