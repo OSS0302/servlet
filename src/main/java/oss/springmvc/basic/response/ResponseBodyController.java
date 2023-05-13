@@ -42,7 +42,17 @@ public class ResponseBodyController {
         return new ResponseEntity<>(helloData, HttpStatus.OK);
 
     }
+    @ResponseStatus(HttpStatus.OK) // Jsonv2 처럼 http 상태를 바꿀 수없기 때문에 따로 어노테이션을 추가한다.
+    @ResponseBody
+    @GetMapping("/response-body-json-v2")
+    public HelloData responseBodyJsonV2(){
+        HelloData helloData = new HelloData();
+        helloData.setUsername("UserA");
+        helloData.setAge(20);
 
+        return helloData;
+
+    }
 
 
 }
