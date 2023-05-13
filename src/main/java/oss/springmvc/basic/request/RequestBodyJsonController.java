@@ -54,7 +54,13 @@ public class RequestBodyJsonController {
         return "ok";
     }
 
-
+    @ResponseBody
+    @PostMapping("/request-body-json-v3")
+    public String requestBodyJsonV3(@RequestBody HelloData helloData) throws IOException {
+        //@RequestBody를 생략하면 @ModelAttribute으로 기본 값이 세팅되어서 이름은 null 로 나이는 0으로 값이 나온다.
+        log.info("username={}, age={}", helloData.getUsername(),helloData.getAge());
+        return "ok";
+    }
 
 
 }
