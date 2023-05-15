@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import oss.itemservice.domain.Item;
 import oss.itemservice.repository.ItemRepository;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class ItemRepositoryTest {
@@ -29,13 +31,26 @@ public class ItemRepositoryTest {
     @Test
     void findAll(){
         //given
+        Item item1 =new Item("itemA",10000,10); //아이템이름:아이템A 가격: 10000 상품수량: 10개
+        Item item2 =new Item("itemA",10000,20); //아이템이름:아이템B 가격: 20000 상품수량: 20개
+        // 아이템 저장하기
+        itemRepository.save(item1);
+        itemRepository.save(item2);
         //when
-        //than
+        List<Item> result = itemRepository.findAll();
 
+        //than
+        assertThat(result.size()).isEqualTo(2);
+        assertThat(result).contains(item1,item2);
     }
     @Test
     void updateItem (){
         //given
+        Item item1 =new Item("itemA",10000,10); //아이템이름:아이템A 가격: 10000 상품수량: 10개
+        Item item2 =new Item("itemA",10000,20); //아이템이름:아이템B 가격: 20000 상품수량: 20개
+        // 아이템 저장하기
+        itemRepository.save(item1);
+        itemRepository.save(item2);
         //when
         //than
 
