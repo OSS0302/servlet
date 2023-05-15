@@ -46,13 +46,19 @@ public class ItemRepositoryTest {
     @Test
     void updateItem (){
         //given
-        Item item1 =new Item("itemA",10000,10); //아이템이름:아이템A 가격: 10000 상품수량: 10개
-        Item item2 =new Item("itemA",10000,20); //아이템이름:아이템B 가격: 20000 상품수량: 20개
-        // 아이템 저장하기
-        itemRepository.save(item1);
-        itemRepository.save(item2);
+        Item item =new Item("itemA",10000,10); //아이템이름:아이템A 가격: 10000 상품수량: 10개
+        Item saveItem = itemRepository.save(item);
+        Long itemId = saveItem.getId();
         //when
+        Item updateParam = new Item("item2", 20000, 30);
+        itemRepository.update(itemId, updateParam);
+
         //than
+        Item findItem = itemRepository.findById(itemId);
+
+        assertThat(findItem.getItemName()).isEqualTo(updateParam.getItemName());
+        assertThat(findItem.getPriace()).isEqualTo(updateParam.getPriace());
+        assertThat(findItem.getQuantity()).isEqualTo(updateParam.getQuantity());
 
     }
 }
