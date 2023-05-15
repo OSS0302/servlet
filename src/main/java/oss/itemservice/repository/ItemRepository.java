@@ -3,7 +3,9 @@ package oss.itemservice.repository;
 import org.springframework.stereotype.Repository;
 import oss.itemservice.domain.Item;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -20,7 +22,13 @@ public class ItemRepository {
      // 상품 조회
     public Item findById(Long id){
         return store.get(id);
+    }
+    // 상품전체 조회
+    public List<Item> findAll(){
+        return new ArrayList<>(store.values()); // 한번 감싸야지만 store에 영향을 주지 않는다.
 
     }
+
+
 
 }
