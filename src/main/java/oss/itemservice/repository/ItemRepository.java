@@ -33,6 +33,10 @@ public class ItemRepository {
          findItem.setItemName(updateParam.getItemName()); //아이템 이름
          findItem.setPriace(updateParam.getPriace()); //아이템 가격
          findItem.setQuantity(updateParam.getQuantity()); //아이템 갯수
+
+     }
+     public void clearStore(){
+        store.clear();//여기있는 hashMap 이 초기화된다.
      }
 
 
