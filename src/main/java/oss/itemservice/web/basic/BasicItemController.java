@@ -22,7 +22,7 @@ public class BasicItemController {
     public String items(Model model ){
         List<Item> items = itemRepository.findAll(); // 상품 전체 조회 리스트
         model.addAttribute("items",items);// 이름: items 데이터 items를 모델 실어서 보낸다.
-        return "basic/item";
+        return "basic/items";
     }
     //테스트하기위한 데이터 넣기
     @PostConstruct
