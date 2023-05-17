@@ -32,6 +32,12 @@ public class BasicItemController {
         model.addAttribute("item",item);
         return "basic/item";
     }
+    // 상품 등록 폼 만들기
+    @GetMapping("/add")
+    public String addForm(){
+        return "basic/addForm";
+    }
+
     //테스트하기위한 데이터 넣기
     @PostConstruct
     public void init(){
