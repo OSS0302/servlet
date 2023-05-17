@@ -1,10 +1,11 @@
 package oss.itemservice.web.basic;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import oss.itemservice.domain.Item;
 import oss.itemservice.repository.ItemRepository;
@@ -23,6 +24,13 @@ public class BasicItemController {
         List<Item> items = itemRepository.findAll(); // 상품 전체 조회 리스트
         model.addAttribute("items",items);// 이름: items 데이터 items를 모델 실어서 보낸다.
         return "basic/items";
+    }
+    //상품 상세
+    @GetMapping("/{itemId}")
+        public String item(@PathVariable long itemId, Model model){
+        Item item = itemRepository.findById(itemId);
+        model.addAttribute("item",item);
+        return "basic/item";
     }
     //테스트하기위한 데이터 넣기
     @PostConstruct
