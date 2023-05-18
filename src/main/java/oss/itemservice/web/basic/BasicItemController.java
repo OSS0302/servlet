@@ -92,10 +92,11 @@ public class BasicItemController {
         return "basic/editForm"; //basic/items 경로로 반환한다.
     }
     @PostMapping("/{itemId}/edit")
-    public String edit(@PathVariable Long itemId, Model model){
+    public String edit(@PathVariable Long itemId, @ModelAttribute Item item){
+        // 아이템 레포지토리 안에 아이템 업데이트 해서 아이템아이디와  @ModelAttribute item 넣어준다.
+        itemRepository.update(itemId,item);
 
-
-        return "xx"; //basic/items 경로로 반환한다.
+        return "redirect:/basic/item"; // 리다이렉트 해서 초기 화면 돌아간다.
     }
 
     //테스트하기위한 데이터 넣기
