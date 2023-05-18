@@ -53,7 +53,7 @@ public class BasicItemController {
     }
 
     // model.attribute 사용하기
-    @PostMapping("/add")
+    //@PostMapping("/add")
     public String addItemV2(@ModelAttribute("item")Item item, Model model){
        // @ModelAttribute가  1.아래와같이 동작하며 아이템 인스턴스 생성후 상품이름과 가격 수량 등를 자동 만들어준다.
         //model.addAttribute("item",item); 자동으로 뷰에 넣어준다. 그래서 만들 필요가 없다.
@@ -82,6 +82,12 @@ public class BasicItemController {
 
 
         return "basic/item";
+    }@PostMapping("/add")
+    public String addItemV5(Item item){ // @ModelAttribute 도 생략가능하다
+
+        itemRepository.save(item);
+        return "redirect:/basic/items/"+item.getId(); // /basic/items/" 로 아이템 를 실어서 리다이렉트 하겠다.
+        // 등록 할때 새로고침 하면 다음 등록이 되었지만 리다이렉트  GET /items/{id} 이 되면 마지막이 GET /items/{id} 되므로 등록 할떄 자동생성  오류 해결 된다.
     }
 
     @GetMapping("/{itemId}/edit")
