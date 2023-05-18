@@ -75,7 +75,7 @@ public class BasicItemController {
         // @ModelAttribute에서 @ModelAttribute에서 이름 안 사용하면 클래스 Item의   첫글 자만 소문자로 변경되어  item 이름으로 자동으로 만들어준다.
 
         return "basic/item";
-    }@PostMapping("/add")
+    }//@PostMapping("/add")
     public String addItemV4(Item item){ // @ModelAttribute 도 생략가능하다
 
         itemRepository.save(item);
@@ -90,6 +90,12 @@ public class BasicItemController {
         model.addAttribute("item",item); //모델에 넣어준다.
 
         return "basic/editForm"; //basic/items 경로로 반환한다.
+    }
+    @PostMapping("/{itemId}/edit")
+    public String edit(@PathVariable Long itemId, Model model){
+
+
+        return "xx"; //basic/items 경로로 반환한다.
     }
 
     //테스트하기위한 데이터 넣기
