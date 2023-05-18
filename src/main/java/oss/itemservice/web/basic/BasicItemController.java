@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import oss.itemservice.domain.Item;
 import oss.itemservice.repository.ItemRepository;
+import oss.springmvc.basic.HelloData;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -63,6 +64,14 @@ public class BasicItemController {
 
         itemRepository.save(item);
 
+
+        return "basic/item";
+    }    //@PostMapping("/add")
+    public String addItemV3(@ModelAttribute Item item, Model model){
+
+        itemRepository.save(item);
+        //model.addAttribute("item",item); // 자동으로 추가 생략가능 하나
+        // @ModelAttribute에서 이름 안 사용하면 클래스 Item-> 소문자 item 이름으로 자동으로 만들어준다.
 
         return "basic/item";
     }
