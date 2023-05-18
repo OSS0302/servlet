@@ -54,7 +54,8 @@ public class BasicItemController {
     // model.attribute 사용하기
     @PostMapping("/add")
     public String addItemV2(@ModelAttribute("item")Item item, Model model){
-       // @ModelAttribute가  아래와같이 동작하며 아이템 인스턴스 생성후 상품이름과 가격 수량 등를 자동 만들어준다.
+       // @ModelAttribute가  1.아래와같이 동작하며 아이템 인스턴스 생성후 상품이름과 가격 수량 등를 자동 만들어준다.
+        //model.addAttribute("item",item); 자동으로 뷰에 넣어준다. 그래서 만들 필요가 없다.
 //        Item item = new Item();
 //        item.setItemName(itemName);
 //        item.setPrice(price);
@@ -62,7 +63,7 @@ public class BasicItemController {
 
         itemRepository.save(item);
 
-        model.addAttribute("item",item);
+
         return "basic/item";
     }
 
