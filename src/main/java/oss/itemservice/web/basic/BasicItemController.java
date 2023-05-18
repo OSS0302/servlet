@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import oss.itemservice.domain.Item;
 import oss.itemservice.repository.ItemRepository;
-import oss.springmvc.basic.HelloData;
+
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -82,6 +82,14 @@ public class BasicItemController {
 
 
         return "basic/item";
+    }
+
+    @GetMapping("/{itemId}/edit")
+    public String editForm(@PathVariable Long itemId, Model model){
+        Item item = itemRepository.findById(itemId); //아이템을 아이템 아이디를 통해서 찾는다.
+        model.addAttribute("item",item); //모델에 넣어준다.
+
+        return "basic/items"; //basic/items 경로로 반환한다.
     }
 
     //테스트하기위한 데이터 넣기
