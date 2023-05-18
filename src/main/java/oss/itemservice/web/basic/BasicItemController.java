@@ -35,8 +35,8 @@ public class BasicItemController {
     public String addForm(){
         return "basic/addForm";
     }
-    @PostMapping("/add")
-    public String save(@RequestParam String itemName,
+    //@PostMapping("/add")
+    public String addItemV1(@RequestParam String itemName,
                        @RequestParam int price,
                        @RequestParam Integer quantity,
                        Model model){
@@ -44,6 +44,21 @@ public class BasicItemController {
         item.setItemName(itemName);
         item.setPrice(price);
         item.setQuantity(quantity);
+
+        itemRepository.save(item);
+
+        model.addAttribute("item",item);
+        return "basic/item";
+    }
+
+    // model.attribute 사용하기
+    @PostMapping("/add")
+    public String addItemV2(@ModelAttribute("item")Item item, Model model){
+       // @ModelAttribute가  아래와같이 동작하며 아이템 인스턴스 생성후 상품이름과 가격 수량 등를 자동 만들어준다.
+//        Item item = new Item();
+//        item.setItemName(itemName);
+//        item.setPrice(price);
+//        item.setQuantity(quantity);
 
         itemRepository.save(item);
 
